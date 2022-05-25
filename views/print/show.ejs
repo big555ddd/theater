@@ -1,0 +1,139 @@
+<%- include("../partials/header.ejs") %>
+<style>
+    h1{
+        text-align: center;
+    }
+     .center {
+      position: relative;
+      left: 50px;
+      top: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  height: 50%;
+  border-radius: 50px;
+}
+.center1 {
+    position: absolute;
+  top: 170px;
+  right: 450px;
+  font-size: 18px;
+}
+p{
+    margin-left: auto;
+  margin-right: auto;
+}
+.topright {
+  position: absolute;
+  text-align: center;
+  top: 130px;
+  right: 900px;
+  font-size: 18px;
+}
+.topright1 {
+  position: absolute;
+  text-align: center;
+  top: 170px;
+  right: 520px;
+  font-size: 18px;
+  width: 50%;
+}
+
+.mb-3{
+  width: 800px;
+
+}
+.btn-primary{
+  position: absolute;
+ top: 940px;
+  right: 980px;
+}
+.head{
+  position: absolute;
+ top: 200px;
+  right: 1100px;
+}
+.book{
+  position: relative;
+  color: white;
+      left: 80px;
+
+}
+.book1{
+  position: absolute;
+  color: white;
+      left: 450px;
+      top: 140px;
+}
+.book2{
+  position: absolute;
+  color: white;
+      left: 450px;
+      top: 270px;
+}
+.book3{
+  position: relative;
+  color: white;
+      left: 450px;
+      top: 150px;
+}
+.short{
+  
+  position: relative;
+  font-size: 18px;
+  
+  color: rgb(255, 255, 255);
+  width: 1200px;
+  border-radius: 1px;
+  margin: 50px;
+
+}
+</style>
+<script>
+ function myPopup(myURL, title, myWidth, myHeight) {
+            var left = (screen.width - myWidth) / 2;
+            var top = (screen.height - myHeight) / 4;
+            var myWindow = window.open(myURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + myWidth + ', height=' + myHeight + ', top=' + top + ', left=' + left);
+  }
+</script>
+<h3 class="book1"><%= print.name %> </h3> 
+<h5 class="book3">Time: <%= print.time %> นาที</h5>
+<h5 class="book2">Type: <%= print.Artist %></h5>
+<%- include("../partials/star.ejs") %>
+<img src="<%= print.image %>" height = '300px' class = "center">
+<a href="/t" onclick=" myPopup ('/b', 'web', 1050, 550)" class="btn btn-sm btn-outline-secondary book"  >จองที่นั่ง</a> 
+<p></p>
+
+<iframe width="720" height="460" src="<%= print.trailer %>" class = "center1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+<p class="short">เรื่องย่อ: <%= print.short %> </p>
+<!-- <p>Submitted by <%= print.author.username %></p> -->
+<% if (currentUser && print.author.id.equals(currentUser._id) || (currentUser &&  currentUser.isAdmin)){ %> 
+    <a href="/prints/<%= print._id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+    <form id= 'delete-form' action = "/prints/<%= print._id %>?_method=DELETE" method ="POST">
+        <button type='submit' class="btn btn-sm btn-outline-secondary">Delete</button>
+    </form>
+<% } %> 
+
+<h2 style="color: white;">Comments:</h2>
+
+<a href="/prints/<%= print._id %>/comments/new" class="btn btn-sm btn-outline-secondary">Add new comment</a>
+<!--<a href="/prints/<%= print._id %>/comments/new" class="btn btn-sm btn-outline-secondary">Add new comment</a> -->
+<% print.comments.forEach(function(comment){ %>
+  <p style="color: white;">
+    <strong><%= comment.author.username %></strong> - <%= comment.text %>
+</p>
+    <% if (comment.author.id.equals(currentUser._id) ){ %>
+        <a href="/prints/<%= print._id %>/comments/<%= comment._id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a> 
+        <form id= 'delete-form' action = "/prints/<%= print._id %>/comments/<%= comment._id %>?_method=DELETE" method ="POST">
+            <button type='submit' class="btn btn-sm btn-outline-secondary">Delete</button>
+        </form>
+    <% } %>  
+    <% if (currentUser.isAdmin == true  ){ %>
+      <form id= 'delete-form' action = "/prints/<%= print._id %>/comments/<%= comment._id %>?_method=DELETE" method ="POST">
+          <button type='submit' class="btn btn-sm btn-outline-secondary">Delete comment</button>
+      </form>
+  <% } %>  
+<% }) %>
+
+
+<%- include("../partials/footer.ejs") %>

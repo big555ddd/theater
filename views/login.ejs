@@ -1,0 +1,27 @@
+<%- include("partials/header.ejs") %>
+<div class="container">
+    <style >
+        .field {width:190px; border:1px solid b3b3a9; background:#FFF; padding:6px 6px 6px 24px;}
+        .username{background:url('/images/username.png') no-repeat #FFF;}
+        .password{background:url('/images/password.png') no-repeat #FFF;}
+        </style>
+<h1>Login</h1>
+<form action="/login" method="POST">
+    <label class="form-label">Username</label>
+<div class="mb-3 username ">
+    <input type="text" class="form-control" name="username" placeholder="Your username" > 
+
+</div>
+<label class="form-label">Password</label>
+<div class="mb-3 ">
+    <input type="password" class="form-control" name="password" placeholder="Your Password"  >
+   
+</div>
+<button type="submit" class="btn btn-primary">Login</button>
+<a href="/register"class="btn btn-primary">Register</a>
+<a href="/">Go back</a>
+
+</form>
+</div>
+
+<%- include("partials/footer.ejs") %>

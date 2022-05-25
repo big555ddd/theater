@@ -1,0 +1,71 @@
+.index-image{
+    object-fit: cover;
+   
+}
+
+#delete-form{
+    display: inline;
+}
+
+.container-fluid{
+    
+    font-family: Arial;
+    color: rgb(238, 77, 77);
+    font-size: 20px;
+    background-color: rgb(238, 77, 77);
+    padding: 10px 20px 10px 20px;
+  
+    text-decoration: none; 
+}
+
+
+input[type="text"] {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 0.3s;
+  }
+  
+  input[type="text"]:focus {
+    border-color: dodgerBlue;
+    box-shadow: 0 0 8px 0 dodgerBlue;
+  }
+.btn {
+    box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+	background-color:#77d42a;
+	border-radius:6px;
+	border:1px solid #268a16;
+	display:inline-block;
+	cursor:pointer;
+	color:#306108;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #aade7c;
+}
+.btn:hover {
+	background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+	background-color:#5cb811;
+}
+.btn:active {
+	position:relative;
+	top:1px;
+}
+body {
+    background-color: rgb(26, 3, 3); 
+    margin: 0;
+    
+  }
+head {
+    background-color: blue;
+}
+  
+
+  

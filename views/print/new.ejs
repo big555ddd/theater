@@ -1,0 +1,35 @@
+<%- include("../partials/header.ejs") %>
+<div class="container">
+<h1>Add your new Movie</h1>
+<form action="/prints" method="POST" enctype="multipart/form-data">
+<div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" class="form-control" name="print[name]" placeholder="Movie title">
+</div>
+<div class="mb-3">
+    <label class="form-label">Type</label>
+    <input type="text" class="form-control" name="print[Artist]" placeholder="Type">
+</div>
+<div class="mb-3">
+    <label class="form-label">Time</label>
+    <input type="text" class="form-control" name="print[time]" placeholder="เวลา">
+</div>
+</div>
+<div class="mb-3">
+    <label class="form-label">เรื่องย่อ</label>
+    <input type="text" class="form-control" name="print[short]" placeholder="เรื่องย่อ">
+</div>
+<div class="mb-3">
+    <label class="form-label">video ตัวอย่าง</label>
+    <input type="text" class="form-control" name="print[trailer]" placeholder="URL">
+</div>
+<div class="mb-3">
+    <label class="form-label">Image</label>
+    <input type="file" class="form-control" name="image" accept='image/*'>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<a href="/prints">Go back</a>
+</form>
+</div>
+
+<%- include("../partials/footer.ejs") %>
